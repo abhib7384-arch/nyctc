@@ -1,0 +1,512 @@
+  <!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NYCTC COMPUTER CENTER - Nanoor</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #0a192f;
+      --secondary: #1e3c72;
+      --accent: #ffcc00;
+      --accent-hover: #e6b800;
+      --text-light: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: #112240;
+      --border-color: #233554;
+      --whatsapp-color: #25d366;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--primary);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    header {
+      background: rgba(10, 25, 47, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .btn-contact {
+      background: var(--accent);
+      color: var(--primary);
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn-contact:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem;
+      background: radial-gradient(circle at top, #1e3c72 0%, #0a192f 100%);
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 204, 0, 0.15);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-hero {
+      padding: 12px 26px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    /* Section Styles */
+    section {
+      padding: 4rem 1.5rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    /* Course Cards */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .course-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 25px;
+      position: relative;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .course-card i {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .course-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .course-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .tag {
+      background: rgba(100, 255, 218, 0.1);
+      color: #64ffda;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .feature-box {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 30px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .feature-box i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    /* Contact & Details */
+    .contact-container {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 40px;
+      border: 1px solid var(--border-color);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contact-info div {
+      margin-bottom: 25px;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .contact-info i {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-top: 5px;
+    }
+
+    .contact-info strong {
+      display: block;
+      font-size: 1.1rem;
+    }
+
+    .contact-info span {
+      color: var(--text-muted);
+    }
+
+    .action-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .btn-call, .btn-wa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn-call {
+      background: #ffcc00;
+      color: #0a192f;
+    }
+
+    .btn-wa {
+      background: var(--whatsapp-color);
+      color: #ffffff;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .nav-links { display: none; }
+      .contact-container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-graduation-cap"></i> NYCTC
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">আমাদের সম্পর্কে</a></li>
+        <li><a href="#courses">কোর্সসমূহ</a></li>
+        <li><a href="#features">সুবিধাসমূহ</a></li>
+        <li><a href="#contact">যোগাযোগ</a></li>
+      </ul>
+      <a href="tel:7908948143" class="btn-contact">Call Now</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="about">
+    <div class="badge"> Certified & Govt. Regd.[cite: 1, 2]</div>
+    <h1>NYCTC <span>COMPUTER CENTER</span>[cite: 1, 2]</h1>
+    <p>নানুরে নির্ভরযোগ্য ও প্রফেশনাল কম্পিউটার ট্রেনিং ইনস্টিটিউট। আধুনিক প্রযুক্তির সাথে নিজেকে গড়ে তুলুন চাকরির উপযোগী করে।</p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/917908948143?text=নমস্কার,%20আমি%20NYCTC%20কম্পিউটার%20সেন্টারে%20ভর্তি%20সম্পর্কে%20জানতে%20চাই।" class="btn-hero btn-primary" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i> ভর্তির জন্য মেসেজ করুন
+      </a>
+      <a href="#courses" class="btn-hero btn-secondary">কোর্স সমূহ দেখুন</a>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses">
+    <div class="section-title">
+      <h2>জনপ্রিয় কোর্সসমূহ (Offered Courses)[cite: 1, 2]</h2>
+      <p>চাকরি ও ফ্রিল্যান্সিং উপযোগী সার্টিফিকেট কোর্স</p>
+    </div>
+
+    <div class="courses-grid">
+      <!-- Course 1 -->
+      <div class="course-card">
+        <i class="fa-solid fa-desktop"></i>
+        <h3>Basic Computer[cite: 1, 2]</h3>
+        <p>MS Word, Excel, PowerPoint, Windows ও প্র্যাকটিক্যাল ইন্টারনেট ব্রাউজিং।[cite: 1, 2]</p>
+        <span class="tag">Beginner Friendly</span>
+      </div>
+
+      <!-- Course 2 -->
+      <div class="course-card">
+        <i class="fa-solid fa-certificate"></i>
+        <h3>DCA & ADCA[cite: 1, 2]</h3>
+        <p>Diploma & Advanced Diploma in Computer Application — ফুল প্রফেশনাল কোর্স।[cite: 1, 2]</p>
+        <span class="tag">Career Track</span>
+      </div>
+
+      <!-- Course 3 -->
+      <div class="course-card">
+        <i class="fa-solid fa-calculator"></i>
+        <h3>Tally Prime with GST[cite: 1, 2]</h3>
+        <p>অ্যাকাউন্টিং, বিলিং, জিএসটি ইনভয়েসিং, ব্যালেন্স শিট এবং পে-রোল ম্যানেজমেন্ট।[cite: 1, 2]</p>
+        <span class="tag">High Demand</span>
+      </div>
+
+      <!-- Course 4 -->
+      <div class="course-card">
+        <i class="fa-solid fa-palette"></i>
+        <h3>DTP (Desktop Publishing)[cite: 1, 2]</h3>
+        <p>Adobe Photoshop, PageMaker, CorelDraw — ফ্লেক্স, কার্ড ও গ্রাফিক্স ডিজাইন।[cite: 1, 2]</p>
+        <span class="tag">Design Track</span>
+      </div>
+
+      <!-- Course 5 -->
+      <div class="course-card">
+        <i class="fa-solid fa-code"></i>
+        <h3>Web Design & Internet[cite: 1, 2]</h3>
+        <p>HTML, CSS, ওয়েব পেজ ডিজাইন এবং সাইবার সিকিউরিটি সচেতনতা।[cite: 1, 2]</p>
+        <span class="tag">Tech Skill</span>
+      </div>
+
+      <!-- Course 6 -->
+      <div class="course-card">
+        <i class="fa-solid fa-keyboard"></i>
+        <h3>Typing Speed Practice[cite: 1, 2]</h3>
+        <p>বাংলা ও ইংরেজি টাইপিং স্পিড মাস্টারি — সরকারি ও বেসরকারি চাকরির প্রস্তুতির জন্য।[cite: 1, 2]</p>
+        <span class="tag">Job Ready</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <div class="section-title">
+      <h2>কেন আমাদের বেছে নেবেন?</h2>
+      <p>শিক্ষার্থীদের সর্বোচ্চ প্র্যাকটিক্যাল জ্ঞান নিশ্চিত করার বিশেষ সুবিধাসমূহ</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-box">
+        <i class="fa-solid fa-computer"></i>
+        <h3>১:১ প্র্যাকটিক্যাল ক্লাস[cite: 1, 2]</h3>
+        <p>প্রতিটি শিক্ষার্থীর জন্য আলাদা কম্পিউটার ও যথেষ্ট সময়।</p>
+      </div>
+      <div class="feature-box">
+        <i class="fa-solid fa-chalkboard-user"></i>
+        <h3>অভিজ্ঞ শিক্ষক[cite: 1, 2]</h3>
+        <p>সহজ ও বাস্তবমুখী উদাহরণের মাধ্যমে প্রশিক্ষণ প্রদান।[cite: 1, 2]</p>
+      </div>
+      <div class="feature-box">
+        <i class="fa-solid fa-award"></i>
+        <h3>ভেরিফায়েড সার্টিফিকেট[cite: 1, 2]</h3>
+        <p>সরকার ও চাকরি পরীক্ষায় শতভাগ গ্রহণযোগ্য বৈধ সার্টিফিকেট।[cite: 1, 2]</p>
+      </div>
+      <div class="feature-box">
+        <i class="fa-solid fa-clock"></i>
+        <h3>সুবিধাজনক ব্যাচ</h3>
+        <p>স্কুল, কলেজ শিক্ষার্থী ও চাকরিপ্রার্থীদের জন্য ফ্লেক্সিবল সময়।</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Admission Section -->
+  <section id="contact">
+    <div class="section-title">
+      <h2>ভর্তি ও যোগাযোগের তথ্য</h2>
+      <p>সীমিত আসন • আজই আপনার আসন নিশ্চিত করুন[cite: 1, 2]</p>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <div>
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <strong>ঠিকানা (Location):[cite: 1, 2]</strong>
+            <span>SBI ATM Building (2nd Floor), Nanoor, Birbhum, West Bengal[cite: 1, 2]</span>
+          </div>
+        </div>
+        <div>
+          <i class="fa-solid fa-phone"></i>
+          <div>
+            <strong>হেল্পলাইন / ফোন:</strong>
+            <span>+91 7908948143[cite: 1, 2]</span>
+          </div>
+        </div>
+        <div>
+          <i class="fa-solid fa-calendar-check"></i>
+          <div>
+            <strong>ভর্তি স্ট্যাটাস:</strong>
+            <span style="color: #64ffda;">নতুন ব্যাচে ভর্তি চলছে</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-box">
+        <a href="tel:7908948143" class="btn-call">
+          <i class="fa-solid fa-phone-volume"></i> সরাসরি কল করুন: 7908948143[cite: 1, 2]
+        </a>
+        <a href="https://wa.me/917908948143?text=Hello,%20I%20want%20to%20know%20about%20courses%20at%20NYCTC%20Nanoor." class="btn-wa" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে কথা বলুন[cite: 1, 2]
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 NYCTC COMPUTER CENTER, NANOOR. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
